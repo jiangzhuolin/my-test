@@ -1,5 +1,6 @@
 # Compiled class file
 /target/
+/out/
 *.class
 
 # settings
@@ -34,5 +35,5 @@
 hs_err_pid*
 
 # idea
-.idea
-.iml
+/.idea/
+*.iml
