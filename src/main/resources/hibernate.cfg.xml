@@ -12,11 +12,20 @@
         <!-- hibernate.connection.password : 连接数据库的密码 -->
         <property name="hibernate.connection.password">root123</property>
         <!-- hibernate.connection.url : 连接数据库的地址,路径 -->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncodeing=UTF-8</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncodeing=UTF-8&amp;useSSL=true</property>
+        
+        <!-- 数据库连接池的大小 -->
+	    <property name="connection.pool_size">5</property>
+	     <!-- 每次从数据库中取出并放到JDBC的Statement中的记录条数。Fetch Size设的越大，读数据库的次数越少，速度越快，Fetch Size越小，读数据库的次数越多，速度越慢-->   
+	    <property name="jdbc.fetch_size">50</property>   
+	    <!--批量插入,删除和更新时每次操作的记录数。Batch Size越大，批量操作的向数据库发送Sql的次数越少，速度就越快，同样耗用内存就越大-->   
+	    <property name="jdbc.batch_size">20</property>
         
         
-        <!-- 数据库方言配置 org.hibernate.dialect.MySQLDialect (选择最短的) -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- 数据库方言配置  MySQL5Dialect 表示的是 MyISAM 方言，而 MySQL5InnoDBDialect 表示的是 InnoDB 方言-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+        <property name="hibernate.dialect.storage_engine">innodb</property>
+        <!-- <property name="hibernate.dialect.character">utf8</property> -->
         <!-- show_sql: 操作数据库时,会向控制台打印sql语句 -->
         <property name="show_sql">true</property>
         <!-- format_sql: 打印sql语句前,会将sql语句先格式化  -->
@@ -29,12 +38,15 @@
              create-drop(极少): 无论是否存在表结构.每次启动Hibernate都会重新创建表结构.每次Hibernate运行结束时,删除表结构.
              validate(很少):不会自动创建表结构.也不会自动维护表结构.Hibernate只校验表结构. 如果表结构不一致将会抛出异常.
           -->
-        <property name="hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">create</property>
         <!-- hibernate.connection.autocommit: 事务自动提交  -->
         <property name="hibernate.connection.autocommit">true</property>
 
 
         <!-- 将Session与线程绑定=> 只有配置了该配置,才能使用getCurrentSession -->
-        <property name="hibernate.current_session_context_class">thread</property>    
+        <property name="hibernate.current_session_context_class">thread</property>
+        
+        <!-- 实体类映射配置 -->
+        <mapping class="com.jiangzhuolin.pojo.User"/>    
     </session-factory>
 </hibernate-configuration>
