@@ -1,2 +1,2 @@
 # my-test
-Java Hibernate ×¢½â²âÊÔ
+Java Hibernate Annotation test
