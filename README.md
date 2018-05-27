@@ -1,2 +1,2 @@
 # my-test
-my java test project
+Java Hibernate ×¢½â²âÊÔ
